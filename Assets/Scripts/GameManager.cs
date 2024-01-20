@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     bool gameHasEnded = false;
+    public GameObject deathScreen;
 
     private void Update()
     {
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
         {
             gameHasEnded = true;
             Debug.Log("Game over man!");
+            deathScreen.SetActive(true);
         }
     }
 
