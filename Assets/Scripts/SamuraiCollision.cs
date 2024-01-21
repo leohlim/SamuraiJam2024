@@ -17,7 +17,16 @@ public class SamuraiCollision : MonoBehaviour
             camera.enabled = false;     // Disable camera controls
             movement.enabled = false;   // Disable player movement while falling
             slash.enabled = false;
-            FindObjectOfType<GameManager>().EndGame();
+            FindObjectOfType<GameManager>().GameOver();
+        }
+        else if (other.gameObject.layer == LayerMask.NameToLayer("goal"))
+        {
+            Debug.Log("Reached the goal!");
+            camera.enabled = false;     // Disable camera controls
+            movement.enabled = false;   // Disable player movement while falling
+            slash.enabled = false;
+            FindObjectOfType<GameManager>().Victory();
+
         }
     }
     

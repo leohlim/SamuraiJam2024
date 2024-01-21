@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     bool gameHasEnded = false;
-    public GameObject deathScreen;
+    public GameObject gameOverScreen;
+    public GameObject victoryScreen;
+
 
     private void Update()
     {
@@ -18,13 +20,23 @@ public class GameManager : MonoBehaviour
             }
     }
 
-    public void EndGame()
+    public void GameOver()
     {
         if (!gameHasEnded)
         {
             gameHasEnded = true;
             Debug.Log("Game over man!");
-            deathScreen.SetActive(true);
+            gameOverScreen.SetActive(true);
+        }
+    }
+
+    public void Victory()
+    {
+        if (!gameHasEnded)
+        {
+            gameHasEnded = true;
+            Debug.Log("Victory");
+            victoryScreen.SetActive(true);
         }
     }
 
