@@ -18,6 +18,8 @@ public class SamuraiCollision : MonoBehaviour
             movement.enabled = false;   // Disable player movement while falling
             slash.enabled = false;
             FindObjectOfType<GameManager>().GameOver();
+            FindObjectOfType<Stopwatch>().stopTimer();
+
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("goal"))
         {
@@ -26,7 +28,7 @@ public class SamuraiCollision : MonoBehaviour
             movement.enabled = false;   // Disable player movement while falling
             slash.enabled = false;
             FindObjectOfType<GameManager>().Victory();
-
+            FindObjectOfType<Stopwatch>().stopTimer();
         }
     }
     
