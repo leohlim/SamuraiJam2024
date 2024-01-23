@@ -17,8 +17,11 @@ TagManager:
   - Player
   - groundLayer
   - enemy
+<<<<<<< HEAD
   - Hittable
-  - 
+  - pit
+  - goal
+>>>>>>> game-over-screen
   - 
   - 
   - 
