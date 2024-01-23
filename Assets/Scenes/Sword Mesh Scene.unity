@@ -343,6 +343,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &242795560 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4999886396938408785, guid: f95e630328da044fc967dcaaa32e65f0, type: 3}
+  m_PrefabInstance: {fileID: 1674483076}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &277712515 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 9ab9fb61573533041befd5ff4864016e, type: 3}
@@ -435,6 +440,11 @@ ReflectionProbe:
   m_UseOcclusionCulling: 1
   m_Importance: 1
   m_CustomBakedTexture: {fileID: 0}
+--- !u!1 &719393902 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7546677055153818354, guid: f95e630328da044fc967dcaaa32e65f0, type: 3}
+  m_PrefabInstance: {fileID: 1674483076}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &746329221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1423,6 +1433,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 893100622009316096, guid: d5f63820257b10a48aae9d84f7a783f4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 893100622009316097, guid: d5f63820257b10a48aae9d84f7a783f4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 893100622009316098, guid: d5f63820257b10a48aae9d84f7a783f4, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1475,9 +1493,33 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 893100622009316102, guid: d5f63820257b10a48aae9d84f7a783f4, type: 3}
+      propertyPath: m_TagString
+      value: ProjectileSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 893100622009316125, guid: d5f63820257b10a48aae9d84f7a783f4, type: 3}
+      propertyPath: _blastClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1feee06f7a5242c419dcf5ec4f99e3db, type: 3}
+    - target: {fileID: 893100622009316125, guid: d5f63820257b10a48aae9d84f7a783f4, type: 3}
+      propertyPath: explosionFX
+      value: 
+      objectReference: {fileID: 719393902}
     - target: {fileID: 893100622009316125, guid: d5f63820257b10a48aae9d84f7a783f4, type: 3}
       propertyPath: timeBetweenShots
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 893100623177706285, guid: d5f63820257b10a48aae9d84f7a783f4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893100623177706286, guid: d5f63820257b10a48aae9d84f7a783f4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893100623177706286, guid: d5f63820257b10a48aae9d84f7a783f4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.738
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1832,6 +1874,10 @@ PrefabInstance:
       propertyPath: vcam
       value: 
       objectReference: {fileID: 912949820}
+    - target: {fileID: 2421230261749230196, guid: 4ac30897817f5cc4b9e3c1ed5c65115e, type: 3}
+      propertyPath: sparksFX
+      value: 
+      objectReference: {fileID: 242795560}
     - target: {fileID: 2421230261749230196, guid: 4ac30897817f5cc4b9e3c1ed5c65115e, type: 3}
       propertyPath: parrySound
       value: 

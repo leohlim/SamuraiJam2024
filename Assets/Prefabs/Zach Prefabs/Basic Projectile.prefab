@@ -101,7 +101,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -122,6 +122,8 @@ MonoBehaviour:
   moveSpeed: 4
   smoothTime: 1
   projectileLifetime: 3
+  explosionFX: {fileID: 0}
+  spawnerPosition: {fileID: 0}
   initialDirection: {x: 0, y: 0, z: 0}
 --- !u!54 &1188535611289047414
 Rigidbody:

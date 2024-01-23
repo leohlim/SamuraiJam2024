@@ -6,8 +6,9 @@ public class BasicProjectile : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float smoothTime = 1f;
-
     public float projectileLifetime = 3f;
+
+    public GameObject explosionFX;
 
     private Transform player;
 
@@ -15,6 +16,7 @@ public class BasicProjectile : MonoBehaviour
     public Transform spawnerPosition = null;
 
     public Vector3 initialDirection;
+
     private bool isChaser = true; // Flag to differentiate between 'chaser' and 'simple'
 
     private void Start()
@@ -52,6 +54,32 @@ public class BasicProjectile : MonoBehaviour
     public void SwitchToSimple()
     {
         isChaser = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        switch (other.tag)
+        {
+            case "ProjectileSpawner":
+                other.GetComponent<ProjectileSpawner>().explosionFX.transform.position = spawnerPosition.position;
+                other.GetComponent<ProjectileSpawner>().explosionFX.GetComponent<ParticleSystem>().Play();
+                StartCoroutine(PlayAudioThenDestroy());
+                break;
+        }
+    }
+
+    IEnumerator PlayAudioThenDestroy()
+    {
+        spawnerPosition.GetComponent<ProjectileSpawner>()._blastSource.Play();
+
+        spawnerPosition.GetComponent<Renderer>().enabled = false;
+        spawnerPosition.GetComponent<Collider>().enabled = false;
+        spawnerPosition.GetComponent<ProjectileSpawner>()._blastSource.Play();
+
+        yield return new WaitForSeconds(spawnerPosition.GetComponent<ProjectileSpawner>()._blastClip.length);
+
+        Destroy(gameObject);
+        Destroy(spawnerPosition.gameObject);
     }
 }
 

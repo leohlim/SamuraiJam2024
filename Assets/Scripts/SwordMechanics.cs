@@ -32,7 +32,7 @@ public class SwordMechanics : MonoBehaviour
     private Animator swordAnimator;
 
     public GameObject swordCollider;
-    public GameObject particleFX;
+    public GameObject sparksFX;
 
     private AudioSource swordSoundSource;
     private AudioSource _parrySource;
@@ -130,27 +130,17 @@ public class SwordMechanics : MonoBehaviour
             {
                 HitStop(hit.transform, hitstopShakeIntensity, hitstopDuration);
 
-                particleFX.transform.position = hit.collider.transform.position;
+                sparksFX.transform.position = hit.collider.transform.position;
 
-                foreach (Transform partSys in particleFX.transform)
-                {
-                    if (partSys.GetComponent<ParticleSystem>() == null) continue;
-
-                    partSys.GetComponent<ParticleSystem>().Play();
-                }
+                sparksFX.GetComponent<ParticleSystem>().Play();
             }
             else
             {
                 hit.collider.gameObject.GetComponent<Hittable>().DoJitter();
 
-                particleFX.transform.position = hit.collider.transform.position;
+                sparksFX.transform.position = hit.collider.transform.position;
 
-                foreach(Transform partSys in particleFX.transform)
-                {
-                    if (partSys.GetComponent<ParticleSystem>() == null) continue;
-
-                    partSys.GetComponent<ParticleSystem>().Play();
-                }
+                sparksFX.GetComponent<ParticleSystem>().Play();
             }
         }
     }
