@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     bool gameHasEnded = false;
+    bool victory = false;
     public GameObject gameOverScreen;
     public GameObject victoryScreen;
 
@@ -18,6 +19,12 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Reload pressed");
                 Restart();
             }
+            
+        if(Input.GetKeyDown(KeyCode.Space) && victory == true)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
+        
     }
 
     public void GameOver()
@@ -35,8 +42,10 @@ public class GameManager : MonoBehaviour
         if (!gameHasEnded)
         {
             gameHasEnded = true;
+            victory = true;
             Debug.Log("Victory");
             victoryScreen.SetActive(true);
+            
         }
     }
 

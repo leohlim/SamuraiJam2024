@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/GameOver.unity
-    guid: d8be59e19f66b4c8e8d51c8594ad59c7
+    path: Assets/Scenes/Level_0-0.unity
+    guid: bcf7e0c9c600f476b867db42db3d030f
+  - enabled: 1
+    path: Assets/Scenes/Sword Mesh Scene.unity
+    guid: 707acc8dffb72b144bb1ffbe1c965f3d
   m_configObjects: {}
