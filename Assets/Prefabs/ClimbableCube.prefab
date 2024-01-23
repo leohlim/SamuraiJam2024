@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 873566409639016907}
   - component: {fileID: 8617567104640168476}
   - component: {fileID: 4937312145804247814}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: ClimbableCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

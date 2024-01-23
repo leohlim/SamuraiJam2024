@@ -26,7 +26,7 @@ public class SamuraiMove : MonoBehaviour
 
     [Header("Ground Check")]
     private float playerHeight = 2;
-    public LayerMask groundLayer;
+    public LayerMask ground;
     bool grounded;
 
     [Header("Slope Handling")]
@@ -78,7 +78,7 @@ public class SamuraiMove : MonoBehaviour
     private void Update()
     {
         // ground check
-        grounded = Physics.Raycast(transform.position + new Vector3(0,0.05f,0), Vector3.down, playerHeight * 0.5f + 0.3f, groundLayer);
+        grounded = Physics.Raycast(transform.position + new Vector3(0,0.05f,0), Vector3.down, playerHeight * 0.5f + 0.3f, ground);
 
         MyInput();
         StateHandler();
