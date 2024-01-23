@@ -32,9 +32,13 @@ public class SwordMechanics : MonoBehaviour
     private Animator swordAnimator;
 
     public GameObject swordCollider;
+    public GameObject particleFX;
 
     private AudioSource swordSoundSource;
+    private AudioSource _parrySource;
+
     public AudioClip swordSound;
+    public AudioClip parrySound;
 
     public CinemachineVirtualCamera vcam;
     // Start is called before the first frame update
@@ -42,7 +46,9 @@ public class SwordMechanics : MonoBehaviour
     {
         swordAnimator = GetComponent<Animator>();
         swordSoundSource = gameObject.AddComponent<AudioSource>();
+        _parrySource = gameObject.AddComponent<AudioSource>();
         swordSoundSource.clip = swordSound;
+        _parrySource.clip = parrySound;
     }
 
     // Update is called once per frame
@@ -123,13 +129,29 @@ public class SwordMechanics : MonoBehaviour
             if(hit.collider.gameObject.GetComponent<BasicProjectile>() != null)
             {
                 HitStop(hit.transform, hitstopShakeIntensity, hitstopDuration);
+
+                particleFX.transform.position = hit.collider.transform.position;
+
+                foreach (Transform partSys in particleFX.transform)
+                {
+                    if (partSys.GetComponent<ParticleSystem>() == null) continue;
+
+                    partSys.GetComponent<ParticleSystem>().Play();
+                }
             }
             else
             {
                 hit.collider.gameObject.GetComponent<Hittable>().DoJitter();
-            }
 
-            
+                particleFX.transform.position = hit.collider.transform.position;
+
+                foreach(Transform partSys in particleFX.transform)
+                {
+                    if (partSys.GetComponent<ParticleSystem>() == null) continue;
+
+                    partSys.GetComponent<ParticleSystem>().Play();
+                }
+            }
         }
     }
 
@@ -140,6 +162,10 @@ public class SwordMechanics : MonoBehaviour
 
     IEnumerator ShakeCoroutine(Transform hitObject, float shakeIntensity, float shakeDuration)
     {
+        _parrySource.volume = 0.25f;
+
+        _parrySource.Play();
+
         //save the original speed of the animator
         float originalAnimatorSpeed = swordAnimator.speed;
 
@@ -155,8 +181,10 @@ public class SwordMechanics : MonoBehaviour
         //slow down the player significantly
         swordAnimator.speed = hitstopAnimatorSpeed;
 
+        //save the original position of the projectile before it performs the hitstop shake
         Vector3 originalPosition = hitObject.position;
 
+        //set elapsed hitstop time to zero, since it hasn't started yet
         float elapsedTime = 0f;
 
         BasicProjectile projectileScript = hitObject.GetComponent<BasicProjectile>();
@@ -185,7 +213,6 @@ public class SwordMechanics : MonoBehaviour
 
 
         // Explicitly set the forward direction based on the initial direction
-       
 
         projectileScript.SwitchToSimple();
 

@@ -20,6 +20,8 @@ public class ProjectileSpawner : MonoBehaviour
         // Instantiate the projectile with the correct rotation
         GameObject thisProjectile = Instantiate(projectile, spawnPos.position, spawnPos.rotation);
 
+        thisProjectile.GetComponent<BasicProjectile>().spawnerPosition = spawnPos;
+
         StartCoroutine(SpawnProjectile());
     }
 }

@@ -10,6 +10,10 @@ public class BasicProjectile : MonoBehaviour
     public float projectileLifetime = 3f;
 
     private Transform player;
+
+    [HideInInspector]
+    public Transform spawnerPosition = null;
+
     public Vector3 initialDirection;
     private bool isChaser = true; // Flag to differentiate between 'chaser' and 'simple'
 
@@ -33,7 +37,7 @@ public class BasicProjectile : MonoBehaviour
         else
         {
             // Move the projectile in the direction of its forward vector
-            transform.Translate(transform.forward * moveSpeed * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, spawnerPosition.position, moveSpeed * Time.deltaTime);
         }
     }
 
