@@ -5,3 +5,11 @@ A first-person action platformer where you slice through monsters while navigati
 Created for the [2024 Samurai Game Jam]([url](https://itch.io/jam/samuraigamejam)https://itch.io/jam/samuraigamejam).
 
 
+# Controls
+
+Mouse: Look around
+WASD: Move
+Space: Jump
+Left mouse: Attack
+Shift: Dash
+R: Reload Level
