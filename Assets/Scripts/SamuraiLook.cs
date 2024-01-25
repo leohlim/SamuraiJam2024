@@ -6,14 +6,15 @@ using UnityEngine;
 
 public class SamuraiLook : MonoBehaviour
 {
-    [SerializeField] Transform playerObject;
 
+    public Transform cameraPosition;
+    public Transform orientation;
     public float mouseSensitivity = 100f;
 
     float xRotation;
     float yRotation;
 
-    private void Start()
+    private void Awake()
     {
         // Hide and lock the cursor
         Cursor.lockState = CursorLockMode.Locked;
@@ -22,9 +23,14 @@ public class SamuraiLook : MonoBehaviour
 
     private void Update()
     {
+        transform.position = cameraPosition.position;
+    }
+
+    private void LateUpdate()
+    {
         // Get mouse input
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * 50 * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * 50 * Time.deltaTime;
+        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSensitivity ;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSensitivity ;
 
         yRotation += mouseX;
 
@@ -33,6 +39,6 @@ public class SamuraiLook : MonoBehaviour
 
         // Rotate camera and orientation
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        playerObject.rotation = Quaternion.Euler(0, yRotation, 0);
+        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 }

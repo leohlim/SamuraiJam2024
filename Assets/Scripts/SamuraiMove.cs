@@ -43,7 +43,7 @@ public class SamuraiMove : MonoBehaviour
 
     
 
-    public Transform playerTransform;
+    public Transform orientation;
     public Transform playerCam;
 
     float horizontalInput;
@@ -67,7 +67,7 @@ public class SamuraiMove : MonoBehaviour
 
     public bool dashing;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -130,7 +130,7 @@ public class SamuraiMove : MonoBehaviour
     private void MovePlayer()
     {
         // calculate movement direction
-        moveDirection = playerTransform.forward * verticalInput + playerTransform.right * horizontalInput;
+        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         // on ground
         if(grounded)
@@ -291,7 +291,7 @@ public class SamuraiMove : MonoBehaviour
 
         dashing = true;
 
-        Vector3 forceToApply = playerTransform.forward * dashForce + playerTransform.up * dashUpwardForce;
+        Vector3 forceToApply = orientation.forward * dashForce + orientation.up * dashUpwardForce;
 
         delayedForceToApply = forceToApply;
         Invoke(nameof(DelayedDashForce),0.025f);
