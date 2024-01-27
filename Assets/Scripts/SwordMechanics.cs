@@ -27,20 +27,16 @@ public class SwordMechanics : MonoBehaviour
 
     public LayerMask _layerMask;
 
-    public StarterAssetsInputs _inputs;
-
     private Animator swordAnimator;
 
     public GameObject swordCollider;
-    public GameObject particleFX;
+    public GameObject sparksFX;
 
     private AudioSource swordSoundSource;
     private AudioSource _parrySource;
 
     public AudioClip swordSound;
     public AudioClip parrySound;
-
-    public CinemachineVirtualCamera vcam;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,10 +64,8 @@ public class SwordMechanics : MonoBehaviour
 
         if (isParrying) return;
 
-        if (_inputs.slash)
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            _inputs.slash = false;
-
             swordAnimator.SetTrigger("Slash");
 
             swordSoundSource.pitch = Random.Range(0.75f, 1f);
@@ -93,7 +87,7 @@ public class SwordMechanics : MonoBehaviour
 
     public void Parry()
     {
-        if (_inputs.parry)
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             isParrying = true;
         }
@@ -130,27 +124,17 @@ public class SwordMechanics : MonoBehaviour
             {
                 HitStop(hit.transform, hitstopShakeIntensity, hitstopDuration);
 
-                particleFX.transform.position = hit.collider.transform.position;
+                sparksFX.transform.position = hit.collider.transform.position;
 
-                foreach (Transform partSys in particleFX.transform)
-                {
-                    if (partSys.GetComponent<ParticleSystem>() == null) continue;
-
-                    partSys.GetComponent<ParticleSystem>().Play();
-                }
+                sparksFX.GetComponent<ParticleSystem>().Play();
             }
             else
             {
                 hit.collider.gameObject.GetComponent<Hittable>().DoJitter();
 
-                particleFX.transform.position = hit.collider.transform.position;
+                sparksFX.transform.position = hit.collider.transform.position;
 
-                foreach(Transform partSys in particleFX.transform)
-                {
-                    if (partSys.GetComponent<ParticleSystem>() == null) continue;
-
-                    partSys.GetComponent<ParticleSystem>().Play();
-                }
+                sparksFX.GetComponent<ParticleSystem>().Play();
             }
         }
     }
@@ -176,7 +160,7 @@ public class SwordMechanics : MonoBehaviour
         float originalProjectileMoveSpeed = hitObject.GetComponent<BasicProjectile>().moveSpeed;
 
         //zoom in the camera's FOV
-        vcam.m_Lens.FieldOfView = hitstopCameraFOV;
+        Camera.main.fieldOfView = hitstopCameraFOV;
 
         //slow down the player significantly
         swordAnimator.speed = hitstopAnimatorSpeed;
@@ -220,6 +204,6 @@ public class SwordMechanics : MonoBehaviour
 
         swordAnimator.speed = originalAnimatorSpeed;
 
-        vcam.m_Lens.FieldOfView = originalCameraFOV;
+        Camera.main.fieldOfView = originalCameraFOV;
     }
 }

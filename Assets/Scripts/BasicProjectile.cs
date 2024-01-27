@@ -41,6 +41,17 @@ public class BasicProjectile : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        switch (other.tag)
+        {
+            case "ProjectileSpawner":
+                other.GetComponent<ProjectileSpawner>().DeathMethod();
+                Destroy(gameObject);
+                break;
+        }
+    }
+
     IEnumerator DestroyAfterSeconds(float projectileLifetime)
     {
         yield return new WaitForSeconds(projectileLifetime);
