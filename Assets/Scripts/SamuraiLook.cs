@@ -6,9 +6,11 @@ using UnityEngine;
 
 public class SamuraiLook : MonoBehaviour
 {
+    // Controls the first person player camera. Note: the Main Camera should never be a child of the Player prefab. Doing so
+    // will cause camera jittering with the Player rigidbody.
 
-    public Transform cameraPosition;
-    public Transform orientation;
+    public Transform cameraPosition;            // Link the CameraPos game object under the Player Prefab
+    public Transform orientation;               // Link the Orientation game object under the Player Prefab
     public float mouseSensitivity = 100f;
 
     float xRotation;
