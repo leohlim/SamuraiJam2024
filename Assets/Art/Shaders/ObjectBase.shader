@@ -18,6 +18,7 @@ Shader "Samurai Jam 2024/ObjectBase"
 			#pragma vertex vert
 			#pragma fragment frag
 			#include "UnityCG.cginc"
+			#include "AutoLight.cginc"
 
 			uniform float4 _LightColor0;
 			uniform float4 _Color;
@@ -36,6 +37,7 @@ Shader "Samurai Jam 2024/ObjectBase"
 				float4 pos : SV_POSITION;
 				float4 posWorld : TEXCOORD0;
 				float3 normalDir : TEXCOORD1;
+				LIGHTING_COORDS(2,3)
 			};
 
 			vertexOutput vert(vertexInput input)
@@ -48,6 +50,7 @@ Shader "Samurai Jam 2024/ObjectBase"
 				output.posWorld = mul(modelMatrix, input.vertex);
 				output.pos = UnityObjectToClipPos(input.vertex);
 				output.normalDir = normalize(mul(float4(input.normal, 0.0), modelMatrixInverse).xyz);
+				TRANSFER_VERTEX_TO_FRAGMENT(output);
 				return output;
 			}
 
@@ -57,7 +60,7 @@ Shader "Samurai Jam 2024/ObjectBase"
 				float3 normalDirection = normalize(input.normalDir);
 				float3 viewDirection = normalize(_WorldSpaceCameraPos - input.posWorld.xyz);
 				float3 lightDirection;
-				float attenuation;
+				float attenuation = LIGHT_ATTENUATION(input);
 				
 				if(0.0 == _WorldSpaceLightPos0.w) // dir light?
 				{
@@ -69,7 +72,7 @@ Shader "Samurai Jam 2024/ObjectBase"
 				float dotVal = max(0.0, dot(normalDirection, lightDirection));
 
 				if(dotVal < 0.25)
-					diffuseReflection = _ShadowColor.rgb;
+					diffuseReflection = _ShadowColor.rgb * attenuation;
 				else
 					diffuseReflection = _Color.rgb;
 			
