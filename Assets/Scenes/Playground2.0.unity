@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4393239, g: 0.4876343, b: 0.56787986, a: 1}
+  m_IndirectSpecularColor: {r: 0.4393243, g: 0.4876352, b: 0.56788075, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15480,6 +15480,52 @@ MonoBehaviour:
   sparksFX: {fileID: 1426335993}
   swordSound: {fileID: 8300000, guid: 2ddcd7ca64e92174d89696d8535b1678, type: 3}
   parrySound: {fileID: 8300000, guid: 579f3a105161f3347b6c112a6751c15a, type: 3}
+--- !u!114 &1522561708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522561693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a771fa69f5d654caf7280641a5d118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstepVolume: 0.1
+  timeBetweenStepSound: 0.35
+  footstepAudioClip: {fileID: 8300000, guid: 9e2bc107a75d52249ab6f301aba3fbd8, type: 3}
+  mixerGroup: {fileID: 24300002, guid: bb4b688e6944ee84b96e79524f520157, type: 2}
+--- !u!114 &1522561709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522561693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcffb7e0acf3eca4b8d6d6c297d3c2a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpVolume: 0.25
+  jumpAudioClip: {fileID: 8300000, guid: 1506c21551711e24d90e88602d9a28f0, type: 3}
+  audioMixerGroup: {fileID: 24300002, guid: bb4b688e6944ee84b96e79524f520157, type: 2}
+--- !u!114 &1522561710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522561693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e2a9c809cfd1474097fd5b2a429b4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashVolume: 0.5
+  dashAudioClip: {fileID: 8300000, guid: 915556e28a4c52a47810bcea28350ac1, type: 3}
+  audioMixerGroup: {fileID: 24300002, guid: bb4b688e6944ee84b96e79524f520157, type: 2}
 --- !u!1001 &1538155478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23028,6 +23074,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2609979992847435245, guid: b7777de38e53a425ea028be20b62c450, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1522561701}
+    - targetCorrespondingSourceObject: {fileID: 2609979992847435245, guid: b7777de38e53a425ea028be20b62c450, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1522561708}
+    - targetCorrespondingSourceObject: {fileID: 2609979992847435245, guid: b7777de38e53a425ea028be20b62c450, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1522561709}
+    - targetCorrespondingSourceObject: {fileID: 2609979992847435245, guid: b7777de38e53a425ea028be20b62c450, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1522561710}
   m_SourcePrefab: {fileID: 100100000, guid: b7777de38e53a425ea028be20b62c450, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
