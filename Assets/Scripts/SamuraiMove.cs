@@ -132,6 +132,16 @@ public class SamuraiMove : MonoBehaviour
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
+        // apply additional gravity on the way down
+        if (rb.velocity.y < 0 && !grounded)
+        {
+            Physics.gravity = new Vector3(0, -120.0F, 0);
+        }
+        else
+        {
+            Physics.gravity = new Vector3(0, -30.0F, 0);
+        }
+
         // on ground
         if(grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
