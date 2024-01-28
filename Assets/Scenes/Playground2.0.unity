@@ -1701,6 +1701,52 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bff2dd50fbfa24d30b81267130b50c81, type: 3}
+--- !u!1 &99562693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 99562695}
+  - component: {fileID: 99562694}
+  m_Layer: 0
+  m_Name: OST
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &99562694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99562693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f624e0b2dfacef42a079fba495de9cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ostAudioClip: {fileID: 8300000, guid: 8fa6d3ee980809a45a0ae8da18f395ee, type: 3}
+  ostMixerGroup: {fileID: 24300002, guid: bb4b688e6944ee84b96e79524f520157, type: 2}
+--- !u!4 &99562695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99562693}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.7508824, y: 3.0711823, z: -1.1582419}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &116632599
 GameObject:
   m_ObjectHideFlags: 0
@@ -15508,7 +15554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcffb7e0acf3eca4b8d6d6c297d3c2a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpVolume: 0.25
+  jumpVolume: 0.05
   jumpAudioClip: {fileID: 8300000, guid: 1506c21551711e24d90e88602d9a28f0, type: 3}
   audioMixerGroup: {fileID: 24300002, guid: bb4b688e6944ee84b96e79524f520157, type: 2}
 --- !u!114 &1522561710
@@ -15523,7 +15569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e2a9c809cfd1474097fd5b2a429b4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashVolume: 0.5
+  dashVolume: 2
   dashAudioClip: {fileID: 8300000, guid: 915556e28a4c52a47810bcea28350ac1, type: 3}
   audioMixerGroup: {fileID: 24300002, guid: bb4b688e6944ee84b96e79524f520157, type: 2}
 --- !u!1001 &1538155478
@@ -23102,3 +23148,4 @@ SceneRoots:
   - {fileID: 2128331424}
   - {fileID: 94329720}
   - {fileID: 1538155478}
+  - {fileID: 99562695}
