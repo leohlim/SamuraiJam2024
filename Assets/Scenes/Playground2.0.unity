@@ -18519,7 +18519,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 893100622009316102, guid: d5f63820257b10a48aae9d84f7a783f4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 893100622009316102, guid: d5f63820257b10a48aae9d84f7a783f4, type: 3}
       propertyPath: m_TagString
@@ -23009,7 +23009,7 @@ PrefabInstance:
     - target: {fileID: 6203238165855134903, guid: b7777de38e53a425ea028be20b62c450, type: 3}
       propertyPath: playerCam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1828452847}
     - target: {fileID: 6980015396577361662, guid: b7777de38e53a425ea028be20b62c450, type: 3}
       propertyPath: camera
       value: 
