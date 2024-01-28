@@ -43,6 +43,10 @@ public class SwordMechanics : MonoBehaviour
         swordAnimator = GetComponent<Animator>();
         swordSoundSource = gameObject.AddComponent<AudioSource>();
         _parrySource = gameObject.AddComponent<AudioSource>();
+
+        _parrySource.playOnAwake = false;
+        swordSoundSource.playOnAwake = false;
+
         swordSoundSource.clip = swordSound;
         _parrySource.clip = parrySound;
     }

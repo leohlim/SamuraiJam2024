@@ -29,14 +29,20 @@ public class Hittable : MonoBehaviour
 
         currentHP = maxHP;
 
-        Renderer _renderer = GetComponent<Renderer>();
+        Renderer _renderer;
 
-        if(_renderer != null)
+        if(GetComponent<Renderer>() != null)
         {
-            _material = _renderer.material;
+            _renderer = GetComponent<Renderer>();
+        }
+        else
+        {
+            _renderer = transform.GetChild(0).GetComponent<Renderer>();
         }
 
-        _layerMask = LayerMask.GetMask("Hittable");
+        _material = _renderer.material;
+
+        _layerMask = LayerMask.GetMask("hittable");
     }
 
     public void DoJitter()
@@ -78,7 +84,15 @@ public class Hittable : MonoBehaviour
 
             _source.PlayOneShot(_destroyClip);
 
-            GetComponent<Renderer>().enabled = false;
+            if(GetComponent<Renderer>() != null)
+            {
+                GetComponent<Renderer>().enabled = false;
+            }
+            else
+            {
+                transform.GetChild(0).GetComponent<Renderer>().enabled = false;
+            }
+
             GetComponent<Collider>().enabled = false;
 
             yield return new WaitForSeconds(_destroyClip.length);

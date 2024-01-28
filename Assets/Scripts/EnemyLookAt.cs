@@ -8,8 +8,6 @@ public class EnemyLookAt : MonoBehaviour
 
     void Update()
     {
-        Vector3 relativePos = player.transform.position - transform.position;
-        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        transform.rotation = rotation;
+        transform.LookAt(player.transform.position);
     }
 }
