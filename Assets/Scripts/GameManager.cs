@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public GameObject camera;
     public Vector3 startPosition;
+    public GameObject ost;
 
 
 
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
             
         if(Input.GetKeyDown(KeyCode.Space) && victory == true)
                 {
+                    FindObjectOfType<GlobalSound>().Unmute();
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 }
 
@@ -57,7 +59,9 @@ public class GameManager : MonoBehaviour
         {
             gameHasEnded = true;
             Debug.Log("Game over man!");
+            FindObjectOfType<GlobalSound>().Mute();
             gameOverScreen.SetActive(true);
+            
         }
     }
 
@@ -65,10 +69,10 @@ public class GameManager : MonoBehaviour
     {
         if (!gameHasEnded)
         {
-            
             gameHasEnded = true;
             victory = true;
             Debug.Log("Victory");
+            FindObjectOfType<GlobalSound>().Mute();
             victoryScreen.SetActive(true);
             
         }
@@ -77,10 +81,17 @@ public class GameManager : MonoBehaviour
     void Restart ()
     {
         gameHasEnded = false;
+        victory = false;
         victoryScreen.SetActive(false);
         gameOverScreen.SetActive(false);
         player.transform.position = startPosition;
         FindObjectOfType<SamuraiCollision>().PlayerInputEnabled();
+        ost.SetActive(true);
+        FindObjectOfType<GlobalSound>().Unmute();
+        FindObjectOfType<Stopwatch>().restartTimer();
+
+
+
     }
 
     void Resume()
@@ -92,6 +103,7 @@ public class GameManager : MonoBehaviour
         isPaused = false;
         player.SetActive(true);
         camera.GetComponentInChildren<SamuraiLook>().enabled = true;
+        FindObjectOfType<GlobalSound>().Unmute();
 
 
     }
@@ -105,5 +117,7 @@ public class GameManager : MonoBehaviour
         isPaused = true;
         player.SetActive(false);
         camera.GetComponentInChildren<SamuraiLook>().enabled = false;
+        FindObjectOfType<GlobalSound>().Mute();
+
     }
 }

@@ -25,4 +25,15 @@ public class GlobalSound : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-}
+    public void Mute()
+    {
+        ostAudioSource.mute = true;
+    }
+
+    public void Unmute()
+    {
+        ostAudioSource.mute = false;
+    }
+
+}  
+

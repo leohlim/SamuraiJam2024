@@ -76,6 +76,10 @@ GameObject:
   - component: {fileID: 6203238165855134903}
   - component: {fileID: 6980015396577361662}
   - component: {fileID: 1950941119015921685}
+  - component: {fileID: 107798078294993075}
+  - component: {fileID: 6451939114388307500}
+  - component: {fileID: 2834546579764447985}
+  - component: {fileID: 3752713039311628624}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -289,6 +293,81 @@ MonoBehaviour:
     m_Bits: 256
   slashSound: {fileID: 8300000, guid: 2aebc6d03703746ed8dc70b2ee3f0bc1, type: 3}
   yOffset: 1
+--- !u!114 &107798078294993075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2609979992847435245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b4b7b9678fcea24c8ec7956974697aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttacking: 0
+  isNextAttack: 0
+  shouldAttackClose: 0
+  canAttack: 1
+  swordHitboxActive: 0
+  hitDistance: 1.5
+  hitstopCameraFOV: 70
+  hitstopAnimatorSpeed: 0.005
+  hitstopDuration: 0.2
+  hitstopShakeIntensity: 0.13
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  swordCollider: {fileID: 0}
+  sparksFX: {fileID: 0}
+  swordSound: {fileID: 8300000, guid: 2ddcd7ca64e92174d89696d8535b1678, type: 3}
+  parrySound: {fileID: 8300000, guid: 579f3a105161f3347b6c112a6751c15a, type: 3}
+--- !u!114 &6451939114388307500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2609979992847435245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a771fa69f5d654caf7280641a5d118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstepVolume: 0.25
+  timeBetweenStepSound: 0.2
+  footstepAudioClip: {fileID: 8300000, guid: 9e2bc107a75d52249ab6f301aba3fbd8, type: 3}
+  mixerGroup: {fileID: 24300002, guid: bb4b688e6944ee84b96e79524f520157, type: 2}
+--- !u!114 &2834546579764447985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2609979992847435245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcffb7e0acf3eca4b8d6d6c297d3c2a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpVolume: 0.05
+  jumpAudioClip: {fileID: 8300000, guid: 1506c21551711e24d90e88602d9a28f0, type: 3}
+  audioMixerGroup: {fileID: 24300002, guid: bb4b688e6944ee84b96e79524f520157, type: 2}
+--- !u!114 &3752713039311628624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2609979992847435245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e2a9c809cfd1474097fd5b2a429b4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashVolume: 2
+  dashAudioClip: {fileID: 8300000, guid: 915556e28a4c52a47810bcea28350ac1, type: 3}
+  audioMixerGroup: {fileID: 0}
 --- !u!1 &8615198977073521170
 GameObject:
   m_ObjectHideFlags: 0

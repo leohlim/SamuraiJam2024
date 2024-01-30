@@ -46,4 +46,10 @@ public class Stopwatch : MonoBehaviour
     {
         timerIsRunning = false;
     }
+
+    public void restartTimer()
+    {
+        timeToDisplay = 0;
+        timerIsRunning = true;
+    }
 }
