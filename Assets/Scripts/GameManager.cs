@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 }
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape) && gameHasEnded == false)
         {
             if(isPaused)
             {
