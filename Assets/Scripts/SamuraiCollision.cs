@@ -14,9 +14,7 @@ public class SamuraiCollision : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("pit"))
         {
             Debug.Log("Entered pit");
-            camera.enabled = false;     // Disable camera controls
-            movement.enabled = false;   // Disable player movement while falling
-            slash.enabled = false;
+            PlayerInputDisabled();
             FindObjectOfType<GameManager>().GameOver();
             FindObjectOfType<Stopwatch>().stopTimer();
 
@@ -24,12 +22,24 @@ public class SamuraiCollision : MonoBehaviour
         else if (other.gameObject.layer == LayerMask.NameToLayer("goal"))
         {
             Debug.Log("Reached the goal!");
-            camera.enabled = false;     // Disable camera controls
-            movement.enabled = false;   // Disable player movement while falling
-            slash.enabled = false;
+            PlayerInputDisabled();
             FindObjectOfType<GameManager>().Victory();
             FindObjectOfType<Stopwatch>().stopTimer();
         }
+    }
+
+    public void PlayerInputDisabled()
+    {
+        camera.enabled = false;     // Disable camera controls
+        movement.enabled = false;   // Disable player movement w
+        slash.enabled = false;      // Disable attack
+    }
+
+    public void PlayerInputEnabled()
+    {
+        camera.enabled = true;     // Enable camera controls
+        movement.enabled = true;   // Enable player movement 
+        slash.enabled = true;
     }
     
 }

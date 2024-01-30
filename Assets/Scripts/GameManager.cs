@@ -14,7 +14,16 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenuScreen;
     public GameObject player;
     public GameObject camera;
+    public Vector3 startPosition;
 
+
+
+    private void Start()
+    {
+        startPosition = player.transform.position;
+        
+
+    }
 
     private void Update()
     {
@@ -56,6 +65,7 @@ public class GameManager : MonoBehaviour
     {
         if (!gameHasEnded)
         {
+            
             gameHasEnded = true;
             victory = true;
             Debug.Log("Victory");
@@ -66,7 +76,11 @@ public class GameManager : MonoBehaviour
 
     void Restart ()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        gameHasEnded = false;
+        victoryScreen.SetActive(false);
+        gameOverScreen.SetActive(false);
+        player.transform.position = startPosition;
+        FindObjectOfType<SamuraiCollision>().PlayerInputEnabled();
     }
 
     void Resume()
