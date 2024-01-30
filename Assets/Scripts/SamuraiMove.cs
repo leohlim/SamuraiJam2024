@@ -135,11 +135,11 @@ public class SamuraiMove : MonoBehaviour
         // apply additional gravity on the way down
         if (rb.velocity.y < 0 && !grounded)
         {
-            Physics.gravity = new Vector3(0, -120.0F, 0);
+            Physics.gravity = new Vector3(0, -100.0F, 0);
         }
         else
         {
-            Physics.gravity = new Vector3(0, -30.0F, 0);
+            Physics.gravity = new Vector3(0, -20.0F, 0);
         }
 
         // on ground
