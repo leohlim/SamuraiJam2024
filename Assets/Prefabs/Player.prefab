@@ -76,13 +76,14 @@ GameObject:
   - component: {fileID: 6203238165855134903}
   - component: {fileID: 6980015396577361662}
   - component: {fileID: 1950941119015921685}
+  - component: {fileID: 4569032197923123365}
   - component: {fileID: 107798078294993075}
   - component: {fileID: 6451939114388307500}
   - component: {fileID: 2834546579764447985}
   - component: {fileID: 3752713039311628624}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -282,7 +283,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2609979992847435245}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 377295926036d4d4cb3050d1c981fd3d, type: 3}
   m_Name: 
@@ -293,6 +294,27 @@ MonoBehaviour:
     m_Bits: 256
   slashSound: {fileID: 8300000, guid: 2aebc6d03703746ed8dc70b2ee3f0bc1, type: 3}
   yOffset: 1
+--- !u!95 &4569032197923123365
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2609979992847435245}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 557822de0173d474bac026debe10c41e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &107798078294993075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,7 +439,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8615198977073521170}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -471,7 +493,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.37
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

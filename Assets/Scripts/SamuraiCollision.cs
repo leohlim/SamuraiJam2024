@@ -9,7 +9,7 @@ public class SamuraiCollision : MonoBehaviour
     public SamuraiLook camera;
     public SamuraiSlash slash;
 
-    void OnTriggerEnter (Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("pit"))
         {
@@ -24,6 +24,13 @@ public class SamuraiCollision : MonoBehaviour
             Debug.Log("Reached the goal!");
             PlayerInputDisabled();
             FindObjectOfType<GameManager>().Victory();
+            FindObjectOfType<Stopwatch>().stopTimer();
+        }
+        else if (other.tag == "BasicProjectile")
+        {
+            Debug.Log("Entered pit");
+            PlayerInputDisabled();
+            FindObjectOfType<GameManager>().GameOver();
             FindObjectOfType<Stopwatch>().stopTimer();
         }
     }

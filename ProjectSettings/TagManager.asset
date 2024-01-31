@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - ProjectileSpawner
+  - BasicProjectile
   layers:
   - Default
   - TransparentFX

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1188535611289047414}
   m_Layer: 10
   m_Name: Basic Projectile
-  m_TagString: Untagged
+  m_TagString: BasicProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,12 +119,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c481c98a0db30904a8b9ca43656735a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  smoothTime: 1
+  moveSpeed: 4
   projectileLifetime: 10
   spawnerPosition: {fileID: 0}
-  initialPlayerPosition: {x: 0, y: 0, z: 0}
-  isChaser: 1
+  directionToPlayer: {x: 0, y: 0, z: 0}
+  wasParried: 0
+  inParry: 0
 --- !u!54 &1188535611289047414
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -16,6 +16,9 @@ public class ProjectileSpawner : MonoBehaviour
 
     private Transform player;
 
+    // Keep track of spawned projectiles
+    private List<GameObject> spawnedProjectiles = new List<GameObject>();
+
     private void Start()
     {
         StartCoroutine(SpawnProjectile());
@@ -38,7 +41,10 @@ public class ProjectileSpawner : MonoBehaviour
 
         thisProjectile.GetComponent<BasicProjectile>().spawnerPosition = transform;
 
-        print("projectile set to chaser is currently " + thisProjectile.GetComponent<BasicProjectile>().isChaser);
+        // Add the spawned projectile to the list
+        spawnedProjectiles.Add(thisProjectile);
+
+        print("projectile set to chaser is currently " + thisProjectile.GetComponent<BasicProjectile>().wasParried);
 
         StartCoroutine(SpawnProjectile());
     }
@@ -50,8 +56,19 @@ public class ProjectileSpawner : MonoBehaviour
         GetComponent<Collider>().enabled = false;
         GetComponent<ProjectileSpawner>().enabled = false;
 
+        // Destroy all spawned projectiles
+        foreach (GameObject projectile in spawnedProjectiles)
+        {
+            if (projectile != null)
+            {
+                Destroy(projectile);
+            }
+        }
+
+        spawnedProjectiles.Clear(); // Clear the list
+
         explosionFX.transform.position = transform.position;
-        explosionFX.GetComponent<ParticleSystem>().Play();  
+        explosionFX.GetComponent<ParticleSystem>().Play();
 
         yield return new WaitForSeconds(_deathClip.length);
 
