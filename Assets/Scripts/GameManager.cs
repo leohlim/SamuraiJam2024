@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
     {
         if (!gameHasEnded)
         {
+
+            player.SetActive(false);
             gameHasEnded = true;
             Debug.Log("Game over man!");
             FindObjectOfType<GlobalSound>().Mute();
@@ -85,6 +87,7 @@ public class GameManager : MonoBehaviour
         victoryScreen.SetActive(false);
         gameOverScreen.SetActive(false);
         player.transform.position = startPosition;
+        player.SetActive(true);
         FindObjectOfType<SamuraiCollision>().PlayerInputEnabled();
         ost.SetActive(true);
         FindObjectOfType<GlobalSound>().Unmute();
