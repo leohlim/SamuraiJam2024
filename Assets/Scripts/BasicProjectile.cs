@@ -1,12 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BasicProjectile : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public float smoothTime = 1f;
-
     public float projectileLifetime = 3f;
 
     private Transform player;
@@ -15,33 +12,38 @@ public class BasicProjectile : MonoBehaviour
     public Transform spawnerPosition = null;
 
     [HideInInspector]
-    public Vector3 initialPlayerPosition;
+    public Vector3 directionToPlayer;
 
     [HideInInspector]
-    public bool isChaser = true; // Flag to differentiate between 'chaser' and 'simple'
+    public bool wasParried = false;
+
+    public bool inParry = false;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-
-        initialPlayerPosition = Camera.main.transform.position;
+        directionToPlayer = (Camera.main.transform.position - transform.position).normalized;
 
         StartCoroutine(DestroyAfterSeconds(projectileLifetime));
     }
 
     private void Update()
     {
-        float step = moveSpeed * Time.deltaTime;
-
-        if (isChaser)
+        if (wasParried)
         {
-            // Move the projectile towards the player using Lerp
-            transform.position = Vector3.Lerp(transform.position, initialPlayerPosition, step);
+            // Calculate the direction towards the initial spawner position
+            Vector3 direction = (spawnerPosition.position - transform.position).normalized;
+
+            // Move the projectile towards the initial spawner position
+            transform.Translate(direction * moveSpeed * Time.deltaTime, Space.World);
         }
         else
         {
-            // Move the projectile towards the spawner using Lerp
-            transform.position = Vector3.Lerp(transform.position, spawnerPosition.position, step);
+            if (!inParry)
+            {
+                // Move the projectile towards the player using Lerp or any other logic you prefer
+                transform.Translate(directionToPlayer * moveSpeed * Time.deltaTime, Space.World);
+            }
         }
     }
 
@@ -53,20 +55,23 @@ public class BasicProjectile : MonoBehaviour
                 other.GetComponent<ProjectileSpawner>().DeathMethod();
                 Destroy(gameObject);
                 break;
+
+            case "Player":
+                GetComponent<Renderer>().enabled = false;
+                Destroy(gameObject);
+                break;
         }
     }
 
     IEnumerator DestroyAfterSeconds(float projectileLifetime)
     {
         yield return new WaitForSeconds(projectileLifetime);
-
         Destroy(gameObject);
     }
 
-    // Function to switch the projectile type to 'simple'
+    // Function to switch the projectile type to 'simple' after being parried
     public void SwitchToSimple()
     {
-        isChaser = false;
+        wasParried = true;
     }
 }
-

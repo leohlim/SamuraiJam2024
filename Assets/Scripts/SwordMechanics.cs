@@ -132,9 +132,17 @@ public class SwordMechanics : MonoBehaviour
 
                 sparksFX.GetComponent<ParticleSystem>().Play();
             }
-            else
+            else if (hit.collider.gameObject.GetComponent<Hittable>() != null)
             {
                 hit.collider.gameObject.GetComponent<Hittable>().DoJitter();
+
+                sparksFX.transform.position = hit.collider.transform.position;
+
+                sparksFX.GetComponent<ParticleSystem>().Play();
+            }
+            else if(hit.collider.gameObject.GetComponent<MultiHittable>() != null)
+            {
+                hit.collider.gameObject.GetComponent<MultiHittable>().DoJitter();
 
                 sparksFX.transform.position = hit.collider.transform.position;
 
@@ -164,7 +172,7 @@ public class SwordMechanics : MonoBehaviour
         float originalProjectileMoveSpeed = hitObject.GetComponent<BasicProjectile>().moveSpeed;
 
         //zoom in the camera's FOV
-        Camera.main.fieldOfView = hitstopCameraFOV;
+        //Camera.main.fieldOfView = hitstopCameraFOV;
 
         //slow down the player significantly
         swordAnimator.speed = hitstopAnimatorSpeed;
@@ -179,6 +187,8 @@ public class SwordMechanics : MonoBehaviour
 
         while (elapsedTime < shakeDuration)
         {
+            projectileScript.inParry = true;
+
             projectileScript.moveSpeed = 0;
 
             float randomAngle = Random.Range(0f, 360f);
@@ -201,13 +211,13 @@ public class SwordMechanics : MonoBehaviour
 
 
         // Explicitly set the forward direction based on the initial direction
-
+        projectileScript.moveSpeed = originalProjectileMoveSpeed;
         projectileScript.SwitchToSimple();
 
-        projectileScript.moveSpeed = originalProjectileMoveSpeed;
+        
 
         swordAnimator.speed = originalAnimatorSpeed;
 
-        Camera.main.fieldOfView = originalCameraFOV;
+        //Camera.main.fieldOfView = originalCameraFOV;
     }
 }
