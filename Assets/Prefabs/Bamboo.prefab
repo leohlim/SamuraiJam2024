@@ -338,7 +338,7 @@ MonoBehaviour:
   _destroyClip: {fileID: 8300000, guid: 1feee06f7a5242c419dcf5ec4f99e3db, type: 3}
   maxHP: 1
   currentHP: 0
-  hitDistance: 2
+  hitDistance: 4
   _material: {fileID: 2100000, guid: d366501b985e55d41855e6a12f1b5e29, type: 2}
 --- !u!1001 &718972902882802187
 PrefabInstance:

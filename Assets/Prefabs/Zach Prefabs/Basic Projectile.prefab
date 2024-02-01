@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c481c98a0db30904a8b9ca43656735a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 5
   projectileLifetime: 10
   spawnerPosition: {fileID: 0}
   directionToPlayer: {x: 0, y: 0, z: 0}
